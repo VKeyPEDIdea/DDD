@@ -14,9 +14,12 @@ module.exports = (routing, port) => {
     const { url, socket } = req;
     const [name, method, id] = url.substring(1).split('/');
     const entity = routing[name];
-    if (!entity) return void res.end('Not found');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    if (!entity) return res.end('Not found');
     const handler = entity[method];
-    if (!handler) return void res.end('Not found');
+    if (!handler) return res.end('Not found');
     const src = handler.toString();
     const signature = src.substring(0, src.indexOf(')'));
     const args = [];

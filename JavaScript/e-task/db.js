@@ -1,14 +1,9 @@
 'use strict';
 
 const pg = require('pg');
+const { dbPool } = require('./config.js');
 
-const pool = new pg.Pool({
-  host: '127.0.0.1',
-  port: 5432,
-  database: 'example',
-  user: 'marcus',
-  password: 'marcus',
-});
+const pool = new pg.Pool(dbPool);
 
 module.exports = (table) => ({
   query(sql, args) {

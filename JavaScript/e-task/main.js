@@ -1,8 +1,9 @@
 'use strict';
 
+const { transport } = require('./config.js');
 const fsp = require('node:fs').promises;
 const path = require('node:path');
-const server = require('./ws.js');
+const server = require(`./${transport}.js`);
 const staticServer = require('./static.js');
 const load = require('./load.js');
 const db = require('./db.js');
