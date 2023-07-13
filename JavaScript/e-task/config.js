@@ -1,4 +1,11 @@
 const config = {
+    sandbox: {
+        timeout: 5000,
+        displayErrors: false
+    },
+    static: {
+        port: 8000,
+    },
     dbPool: {
         host: '127.0.0.1',
         port: 5432,
@@ -9,8 +16,8 @@ const config = {
     hashSettings: {
         encodingScheme: 'base64',
     },
-    transport: 'http',
-    apiSettings: {
+    api: {
+        transport: 'http',
         host: '127.0.0.1',
         port: '8001'
     }

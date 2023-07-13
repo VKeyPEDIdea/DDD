@@ -1,12 +1,12 @@
 'use strict';
 
-const { transport } = require('./config.js');
+const config = require('./config.js');
 const fsp = require('node:fs').promises;
 const path = require('node:path');
-const server = require(`./transport/${transport}.js`);
+const server = require(`./transport/${config.api.transport}.js`);
 const staticServer = require('./static.js');
-const load = require('./load.js');
-const db = require('./db.js');
+const load = require('./load.js')(config.sandbox);
+const db = require('./db.js')(config.dbPool);
 const hash = require('./hash.js');
 const logger = require('./logger.js');
 
@@ -27,6 +27,6 @@ const routing = {};
     routing[serviceName] = await load(filePath, sandbox);
   }
 
-  staticServer('./static', 8000);
-  server(routing, 8001);
+  staticServer('./static', config.static.port, logger);
+  server(routing, config.api.port, logger);
 })();
