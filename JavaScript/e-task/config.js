@@ -13,6 +13,11 @@ const config = {
         user: 'marcus',
         password: 'marcus',
     },
+    pg: {
+        database: 'postgres',
+        user: 'postgres',
+        password: 'postgres',
+    },
     hashSettings: {
         encodingScheme: 'base64',
     },
