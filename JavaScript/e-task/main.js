@@ -4,11 +4,11 @@ const config = require('./config.js');
 const fsp = require('node:fs').promises;
 const path = require('node:path');
 const server = require(`./transport/${config.api.transport}.js`);
-const staticServer = require('./static.js');
-const load = require('./load.js')(config.sandbox);
-const db = require('./db.js')(config.dbPool);
-const hash = require('./hash.js');
-const logger = require('./logger.js');
+const staticServer = require('./lib/static.js');
+const load = require('./lib/load.js')(config.sandbox);
+const db = require('./lib/db.js')(config.dbPool);
+const hash = require('./lib/hash.js');
+const logger = require('./lib/logger.js');
 
 const sandbox = {
     console: Object.freeze(logger),

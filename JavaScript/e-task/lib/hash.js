@@ -1,7 +1,7 @@
 'use strict';
 
 const crypto = require('node:crypto');
-const { hashSettings } = require('./config.js');
+const { hashSettings } = require('../config.js');
 
 const hash = (password) => new Promise((resolve, reject) => {
     const salt = crypto.randomBytes(16).toString(hashSettings.encodingScheme);
