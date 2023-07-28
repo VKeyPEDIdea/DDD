@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": true,
   "main": "main.js",
+  "types": "global.d.ts",
   "scripts": {
     "test": "npm run lint && tsc",
     "lint": "eslint . && prettier -c \"**/*.js\" \"**/*.ts\"",
